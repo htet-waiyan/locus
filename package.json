@@ -1,0 +1,19 @@
+{
+  "name": "golden-land",
+  "version": "0.0.1",
+  "description": "Instant location information suggesstion engine",
+  "main": "server.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "Waiyan, John",
+  "license": "MIT",
+  "dependencies": {
+    "body-parser": "^1.13.2",
+    "express": "^4.13.1",
+    "lodash": "^3.10.0",
+    "moment": "^2.10.3",
+    "mongodb": "^2.0.39",
+    "q": "^1.4.1"
+  }
+}
