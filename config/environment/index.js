@@ -12,6 +12,7 @@ var all={
   env:process.env.NODE_ENV,
   root:path.normalize(__dirname+"/../.."),
   port:process.env.PORT||3000,
+  host:process.env.HOSTNAME||'localhost',
   mongo:{
     options:{
       uri_decode_auth:true
@@ -20,7 +21,7 @@ var all={
   api:{
     version:'v1'
   },
-  secret:'fuss-jsonwebtoken',
+  secret:'gdl-jsonwebtoken',
   imgPath:'/golden-land/images'
 }
 

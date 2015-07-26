@@ -12,6 +12,8 @@ module.exports=function(app,config){
   app.set('apiVersion',config.api.version);
 
   global.imgPath=config.imgPath;
+  global.secret=config.secret;
+  global.context=config.host+":"+config.port;
 
   app.use(bodyParser.urlencoded({extended:true}));
   app.use(bodyParser.json());

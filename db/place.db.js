@@ -25,3 +25,55 @@ exports.findByLatLgt=function(lat,lgt){
 
     return defered.promise;
 }
+
+exports.incrRecommend=function(placeId){
+    var defered=Q.defer();
+
+    db.collection('place',{w:1,strict:true},function(err,col){
+        if(err) return defered.reject(err);
+
+        try{
+            var query={"_id":new ObjectId(placeId)};
+        }catch(err){return defered.reject(err);}
+        var update={$inc:{"recommend":1}};
+        var options={
+            projection:{"recommend":1},
+            upsert:false,
+            returnOriginal:false
+        }
+        col.findOneAndUpdate(query,update,options,function(err,result){
+            if(err) return defered.reject(err);
+
+            console.log(result.value);
+            defered.resolve(result.value);
+        })
+    })
+
+    return defered.promise;
+}
+
+exports.addImage=function(placeId,imgUrl){
+        var defered=Q.defer();
+
+        db.collection('place',{w:1,strict:true},function(err,col){
+            if(err) return defered.reject(err);
+
+            try{
+                var query={"_id":new ObjectId(placeId)};
+            }catch(err){return defered.reject(err);}
+            var update={$push:{"images":imgUrl}};
+            var options={
+                projection:{"images":1},
+                upsert:true,
+                returnOriginal:false
+            }
+
+            col.findOneAndUpdate(query,update,options,function(err,result){
+                if(err) return defered.reject(err);
+
+                defered.resolve(result.value);
+            })
+        })
+
+        return defered.promise;
+}
