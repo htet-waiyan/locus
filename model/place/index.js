@@ -19,6 +19,6 @@ exports.fetch=function(lat,lgt){
 }
 
 exports.uploadPhoto=function(placeId,file){
-    var imgUrl=path.join(global.context,'/api/v1/images/'+file.filename);
+    var imgUrl=path.join(global.context,'/api/v1/image/'+file.filename);
     return PlaceDB.addImage(placeId,imgUrl)
 }
